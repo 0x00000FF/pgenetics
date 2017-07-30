@@ -15,7 +15,7 @@ inline uint16 get_random(const uint16 min, const uint16 max)
 	using namespace std;
 
 	static random_device			 rn;
-	static uint32					 seed = rn(); // fixed_seed;
+	static uint32					 seed = rn();
 	static mt19937_64			     rnd(seed);
 
 	uniform_int_distribution<uint16> range(min, max);
@@ -53,11 +53,11 @@ public:
 	enum   chromosome  { one_one, one_two };
 	enum   strand_type { left   , right };
 
-		   lifeform				   (const uint16    pair_size, const uint16 chromosome_count);			    	// TODO :: ·£´ı ¿°»öÃ¼ ¹× »ı¸íÃ¼ »ı¼º
-		   lifeform				   (lifeform&		paternal,  lifeform&    maternal);							// TODO :: ¿°»öÃ¼ À¯ÀüÀ» ÅëÇÑ »ı¸íÃ¼ »ı¼º
+		   lifeform				   (const uint16    pair_size, const uint16 chromosome_count);			    	// TODO :: ëœë¤ ì—¼ìƒ‰ì²´ ë° ìƒëª…ì²´ ìƒì„±
+		   lifeform				   (lifeform&		paternal,  lifeform&    maternal);							// TODO :: ì—¼ìƒ‰ì²´ ìœ ì „ì„ í†µí•œ ìƒëª…ì²´ ìƒì„±
 																								    
-	inline uint16		get_chromosome_count   ();															    // TODO :: ¿°±â½ÖÀÇ °¹¼ö
-	std::vector<helix>  create_haploid();       															    // TODO :: ·£´ı ¿°»öÃ¼ »ı¼º
+	inline uint16		get_chromosome_count   ();															    // TODO :: ì—¼ê¸°ìŒì˜ ê°¯ìˆ˜
+	std::vector<helix>  create_haploid();       															    // TODO :: ëœë¤ ì—¼ìƒ‰ì²´ ìƒì„±
     std::vector<helix>  get_genetic_code();
 	void   kill_lifeform();
 
