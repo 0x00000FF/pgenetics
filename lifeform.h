@@ -1,6 +1,7 @@
 #pragma once
 
 #include <cstdio>
+#include <memory>
 #include <string>
 #include <random>
 #include <vector>
