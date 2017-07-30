@@ -14,7 +14,7 @@ inline uint16 get_random(const uint16 min, const uint16 max)
 {
 	using namespace std;
 
-	static random_device			 rn;
+	static random_device		 rn;
 	static uint32				 seed = rn();
 	static mt19937_64			 rnd(seed);
 
@@ -53,9 +53,9 @@ public:
 	       lifeform		(const uint16    pair_size, const uint16 chromosome_count);			    	
 	       lifeform		(lifeform&		paternal,  lifeform&    maternal);				
 																								    
-	inline uint16	    get_chromosome_count   ();															    // TODO :: 염기쌍의 갯수
-	std::vector<helix>  create_haploid();       															    // TODO :: 랜덤 염색체 생성
-        std::vector<helix>  get_genetic_code();
+	inline uint16	    get_chromosome_count   ();
+	std::vector<helix>  create_haploid();
+    std::vector<helix>  get_genetic_code();
 	void                kill_lifeform();
 
 private:
