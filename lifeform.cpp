@@ -12,7 +12,6 @@ lifeform::lifeform(const uint16 pair_size, const uint16 chromosome_count = 2)
 	{
 		for (uint16 i = 0; i < pair_size; ++i)
 		{
-
 			base_unit new_base = base[get_random(0, 3)];
 			chromosome.left.push_back(new_base);
 		}
