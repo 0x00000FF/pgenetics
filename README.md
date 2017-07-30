@@ -1,2 +1,2 @@
 # pgenetics
-Simple Genetic Simulator
+PGenetics :: Simple Genetic Simulator
