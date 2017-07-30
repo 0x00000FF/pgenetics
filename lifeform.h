@@ -50,9 +50,6 @@ struct		   helix
 class			lifeform
 {
 public:
-	enum   chromosome  { one_one, one_two };
-	enum   strand_type { left   , right };
-
 	       lifeform		(const uint16    pair_size, const uint16 chromosome_count);			    	
 	       lifeform		(lifeform&		paternal,  lifeform&    maternal);				
 																								    
