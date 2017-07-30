@@ -11,7 +11,7 @@
 
 // ---------------------------------------------------------------------
 
-inline uint16 get_random(const uint16 min, const uint16 max)
+inline uint32 get_random(const uint16 min, const uint16 max)
 {
 	using namespace std;
 
@@ -24,7 +24,7 @@ inline uint16 get_random(const uint16 min, const uint16 max)
 	return range(rnd);
 }
 
-inline void probability_call(const uint16 factor, void(*callback)())
+inline void probability_call(const uint32 factor, void(*callback)())
 {
 	!get_random(0, factor - 1) ? callback() : 0;
 }
@@ -33,9 +33,6 @@ inline void probability_call(const uint16 factor, void(*callback)())
 
 using	  base_unit = char;
 using	  strand    = std::string;
-
-constexpr uint16 strand_duplication_failure_factor		{ 100 };
-constexpr uint16 strand_duplication_base_error_factor	        { 1000 };
 
 constexpr char base[]
 {
@@ -54,7 +51,7 @@ public:
 	       lifeform		(const uint16    pair_size, const uint16 chromosome_count);			    	
 	       lifeform		(lifeform&		paternal,  lifeform&    maternal);				
 																								    
-	inline uint16	    get_chromosome_count   ();
+	inline uint32	    get_chromosome_count   ();
 	std::vector<helix>  create_haploid();
     std::vector<helix>  get_genetic_code();
 	void                kill_lifeform();
