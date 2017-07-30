@@ -1,16 +1,17 @@
 #include "lifeform.h"
 
 
-lifeform::lifeform(const uint16 pair_size, const uint16 chromosome_count = 2)
+lifeform::lifeform(const uint32 pair_size, const uint32 chromosome_count = 2)
 {
-	for (uint16 i = 0; i < chromosome_count; ++i)
+	for (uint32 i = 0; i < chromosome_count; ++i)
 	{
-		this->chromosomes.push_back(*(new helix()));
+		std::unique_ptr<helix> helix_uptr = std::make_unique<helix>();
+		this->chromosomes.push_back(*helix_uptr);
 	}
 
 	for (helix& chromosome : chromosomes)
 	{
-		for (uint16 i = 0; i < pair_size; ++i)
+		for (uint32 i = 0; i < pair_size; ++i)
 		{
 			base_unit new_base = base[get_random(0, 3)];
 			chromosome.left.push_back(new_base);
@@ -31,10 +32,13 @@ lifeform::lifeform(lifeform& paternal, lifeform& maternal)
 	std::vector<helix> paternal_heritance = paternal.create_haploid();
 	std::vector<helix> maternal_heritance = maternal.create_haploid();
 
-	for (uint16 i = 0; i < paternal_heritance.size() && i < maternal_heritance.size(); ++i)
+	for (uint32 i = 0; i < paternal_heritance.size() && i < maternal_heritance.size(); ++i)
 	{
-		chromosomes.push_back(*(new helix(paternal_heritance[i])));
-		chromosomes.push_back(*(new helix(maternal_heritance[i])));
+		std::unique_ptr<helix> helix_uptr = std::make_unique<helix>(paternal_heritance[i]);
+		chromosomes.push_back(*helix_uptr);
+
+		helix_uptr = std::make_unique<helix>(maternal_heritance[i]);
+		chromosomes.push_back(*helix_uptr);
 	}
 
 	if (this->get_chromosome_count() != paternal.get_chromosome_count() ||
@@ -45,9 +49,9 @@ lifeform::lifeform(lifeform& paternal, lifeform& maternal)
 	}
 }
 
-inline uint16		lifeform::get_chromosome_count()
+inline uint32		lifeform::get_chromosome_count()
 {
-	return (uint16)chromosomes.size();
+	return (uint32)chromosomes.size();
 }
 
 std::vector<helix>  lifeform::create_haploid()
@@ -60,11 +64,11 @@ std::vector<helix>  lifeform::create_haploid()
 	std::vector<helix> meiosis_byproduct;
 	helix temp_helix;
 
-	for (uint16 i = 0; i < chromosomes.size() - 1; i += 2)
+	for (uint32 i = 0; i < chromosomes.size() - 1; i += 2)
 	{
 		temp_helix.left.clear();
 
-		for (uint16 base_iter = 0; base_iter < chromosomes[i].left.size(); ++base_iter)
+		for (uint32 base_iter = 0; base_iter < chromosomes[i].left.size(); ++base_iter)
 		{
 			temp_helix.left.push_back(chromosomes[i + get_random(0, 1)].left[base_iter]);
 		}
