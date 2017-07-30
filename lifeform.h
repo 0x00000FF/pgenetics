@@ -11,7 +11,7 @@
 
 // ---------------------------------------------------------------------
 
-inline uint32 get_random(const uint16 min, const uint16 max)
+inline uint32 get_random(const uint32 min, const uint32 max)
 {
 	using namespace std;
 
@@ -19,7 +19,7 @@ inline uint32 get_random(const uint16 min, const uint16 max)
 	static uint32				 seed = rn();
 	static mt19937_64			 rnd(seed);
 
-	uniform_int_distribution<uint16>         range(min, max);
+	uniform_int_distribution<uint32>         range(min, max);
 
 	return range(rnd);
 }
@@ -48,7 +48,7 @@ struct		   helix
 class			lifeform
 {
 public:
-	       lifeform		(const uint16    pair_size, const uint16 chromosome_count);			    	
+	       lifeform		(const uint32    pair_size, const uint32 chromosome_count);			    	
 	       lifeform		(lifeform&		paternal,  lifeform&    maternal);				
 																								    
 	inline uint32	    get_chromosome_count   ();
