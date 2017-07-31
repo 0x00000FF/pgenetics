@@ -65,10 +65,6 @@ int main()
 		
 		uint32 random_mate_cases = get_random(0, MATE_CASE_SIZE(prev_generation_genetic_pool.size()));
 
-
-		std::wstring num_str = std::to_wstring(random_mate_cases);
-		MessageBoxW(NULL, num_str.c_str(), L"DEBUG_MSG", 0);
-
 		for (uint32 rep_it = 0; rep_it < random_mate_cases; ++rep_it)
 		{
 			static std::vector<lifeform>	random_pool = prev_generation_genetic_pool;
