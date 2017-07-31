@@ -1,6 +1,5 @@
 #include <iostream>
 #include <cstdlib>
-#include <Windows.h>
 #include "lifeform.h"
 
 constexpr uint32					delay_rate           { 1000 };
