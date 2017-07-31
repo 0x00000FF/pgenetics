@@ -25,7 +25,6 @@ lifeform::lifeform(lifeform& paternal, lifeform& maternal)
 {
 	if (paternal.get_chromosome_count() != maternal.get_chromosome_count())
 	{
-		this->kill_lifeform();
 		return;
 	}
 
@@ -44,7 +43,6 @@ lifeform::lifeform(lifeform& paternal, lifeform& maternal)
 	if (this->get_chromosome_count() != paternal.get_chromosome_count() ||
 		this->get_chromosome_count() != maternal.get_chromosome_count())
 	{
-		this->kill_lifeform();
 		return;
 	}
 }
@@ -80,7 +78,7 @@ std::vector<helix>  lifeform::create_haploid()
 	return meiosis_byproduct;
 }
 
-std::vector<helix>  lifeform::get_genetic_code()
+std::vector<helix>  lifeform::get_genetic_code() const
 {
 	return chromosomes;
 }
@@ -109,15 +107,4 @@ void				lifeform::create_pair(helix& target_chromosome)
 			target_strand.push_back('G');
 			break;
 		}
-}
-
-void				lifeform::kill_lifeform()
-{
-	if (!chromosomes.empty())
-		for (helix& chromosome : chromosomes)
-		{
-			delete &chromosome;
-		}
-
-	delete this;
 }
