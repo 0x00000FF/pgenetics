@@ -27,36 +27,6 @@ using        namespace std;
 
 int main(void)
 {
-<<<<<<< HEAD
-    vector<helix> initial_set;
-
-    helix chro_1;
-    helix chro_2;
-
-    chro_1.left  = "ATATCCGC";
-    chro_1.right = "TATAGGCG";
-
-    chro_2.left  = "ATCGTTAT";
-    chro_2.right = "TAGCAATA";
-
-    initial_set.push_back(std::move(chro_1));
-    initial_set.push_back(std::move(chro_2));
-
-    lifeform lf(std::move(initial_set));
-    
-    bool MODIFY_RESULT = lf.modify_gene(2, 1, "AAAAA");
-
-    if (!MODIFY_RESULT)
-    {
-        cout << "failed to modify gene." << endl;
-        getchar();
-    }
-
-    print_genetic_sequence("sample", lf);
-    getchar();
-
-    system("cls");
-
     cout << "Genetic Chaining" << endl
         << "PGenetics Simulation Library By P.Knowledge, 2016-2017." << endl;
     cout << "Initial Pool Size = " << initial_pool_size
@@ -118,66 +88,6 @@ int main(void)
     getchar();
 
     return 0;
-=======
-	cout << "Genetic Chaining"	         							    << endl
-		 << "PGenetics Simulation Library By P.Knowledge, 2016-2017."   << endl;
-	cout << "Initial Pool Size = " << initial_pool_size
-		 << " Base Pair Size = " << pair_size
-		 << " (Nuclear Phase 2n = " << nuclear_phase
-		 << ") Last Generation = "  << final_generation                 << endl;
-	int current_generation = 0;
-	std::vector<lifeform> prev_generation_genetic_pool;
-	std::vector<lifeform> curr_generation_genetic_pool;
-
-	while (current_generation++ < final_generation)
-	{	
-		cout << "[ genetic pool of "
-			 << current_generation
-			 << (current_generation == 1 ? "st" :
-			 	 current_generation == 2 ? "nd" :
-			 	 current_generation == 3 ? "rd" :
-			 	 "th")
-			 << " generation ]" << endl;
-		
-		if (current_generation == 1 && POOL_EMPTY())
-		{
-			for (uint32 init_it = 0; init_it < initial_pool_size; ++init_it)
-			{
-				INIT_LIFEFORM(pair_size, nuclear_phase);
-			}
-			prev_generation_genetic_pool = genetic_pool;
-
-			continue;
-		}
-
-		if (INSUFFICIENT_POOL_SIZE())
-		{
-			cout << "Species Extinct!" << endl;
-			break;
-		}
-		
-		uint32 random_mate_cases = get_random(0, MATE_CASE_SIZE(prev_generation_genetic_pool.size()));
-
-		for (uint32 rep_it = 0; rep_it < random_mate_cases; ++rep_it)
-		{
-			static std::vector<lifeform>	random_pool = prev_generation_genetic_pool;
-			shuffle(random_pool, 2);
-
-			INIT_LIFEFORM(*random_pool.rbegin(), *(random_pool.rbegin() + 1));
-
-			curr_generation_genetic_pool.push_back(genetic_pool.back());
-		}
-		
-		prev_generation_genetic_pool.clear();
-		prev_generation_genetic_pool = curr_generation_genetic_pool;
-		curr_generation_genetic_pool.clear();
-	}
-
-	cout << "Genetic Chaining Finished. ";
-	cout << "Created Offsprings = " << genetic_pool.size() - initial_pool_size;
-	getchar();
-	return 0;
->>>>>>> 1201fd974074e799d7304994caac76a9f210ddfb
 }
 
 void shuffle(std::vector<lifeform>& list, uint64 extract_size)
@@ -208,9 +118,3 @@ void print_genetic_sequence(const std::string name, const lifeform& _lifeform)
 
     cout << "==========================================" << endl;
 }
-
-<<<<<<< HEAD
-=======
-	cout << "==========================================" << endl;
-}
->>>>>>> 1201fd974074e799d7304994caac76a9f210ddfb
